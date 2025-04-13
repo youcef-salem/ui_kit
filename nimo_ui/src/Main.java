@@ -7,6 +7,7 @@ public class Main {
     static  Panel panel = new Panel();
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
+
             @Override
             public void run() {
                 NimoFrame frame = new NimoFrame("Nimo Application", new Color(200, 230, 255));

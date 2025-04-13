@@ -1,19 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 class NimoStartPanel extends JPanel {
     public NimoStartPanel() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
         // Create NimoButtons
-        NimoButton startButton = new NimoButton("Start");
-        NimoButton settingsButton = new NimoButton("Settings", new Color(76, 175, 80), 20);
-        NimoButton exitButton = new NimoButton("Exit", new Color(244, 67, 54), 10);
+        NimoButton startButton = new NimoButton("Start on that   particular time ",
+                Color.PINK, 30, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
 
+
+            }
+        });
         // Add the buttons to the panel
         add(startButton);
-        add(settingsButton);
-        add(exitButton);
+
     }
 }
 
