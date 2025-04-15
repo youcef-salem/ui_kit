@@ -1,4 +1,4 @@
-/*import javax.swing.*;
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
@@ -30,9 +30,9 @@ public class Main {
         });
     }
     
-}*/
+}
 
-import javax.swing.*;
+/*import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -99,6 +99,6 @@ public class Main {
         
 	}
 	
-}
+}*/
         
         
