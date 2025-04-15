@@ -165,25 +165,13 @@ class Card {
         this.imagePath = imagePath;
     }
     
-    /**
-     * Factory method to create a card with the correct image path
-     * 
-     * @param color Card color (red, blue, green, yellow, wild)
-     * @param type Card type (0-9, skip, reverse, draw two, wild, wild draw four)
-     * @return A new Card instance with the appropriate image path
-     */
+
     public static Card create(String color, String type) {
         String imagePath = getImagePath(color, type);
         return new Card(color, type, imagePath);
     }
     
-    /**
-     * Get the image path for a card with the given color and type
-     * 
-     * @param color Card color
-     * @param type Card type
-     * @return The image path for the card
-     */
+
     public static String getImagePath(String color, String type) {
         if (CARD_IMAGES.containsKey(color.toLowerCase()) && 
             CARD_IMAGES.get(color.toLowerCase()).containsKey(type.toLowerCase())) {
@@ -276,7 +264,7 @@ public class CardView extends JComponent {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         
-        // Enable antialiasing
+     
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         
@@ -353,33 +341,4 @@ public class CardView extends JComponent {
         return card;
     }
     
-    /**
-     * Example of how to use the Card factory method
-     */
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Card Test");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout());
-        
-        // Create cards using the factory method
-        Card redSkip = Card.create("red", "skip");
-        Card blue7 = Card.create("blue", "7");
-        Card greenReverse = Card.create("green", "reverse");
-        Card wildDrawFour = Card.create("wild", "wild draw four");
-        
-        // Create card views
-        CardView redSkipView = new CardView(redSkip);
-        CardView blue7View = new CardView(blue7);
-        CardView greenReverseView = new CardView(greenReverse);
-        CardView wildDrawFourView = new CardView(wildDrawFour);
-        
-        // Add to frame
-        frame.add(redSkipView);
-        frame.add(blue7View);
-        frame.add(greenReverseView);
-        frame.add(wildDrawFourView);
-        
-        frame.pack();
-        frame.setVisible(true);
-    }
 }

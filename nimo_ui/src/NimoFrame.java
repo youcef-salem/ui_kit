@@ -16,6 +16,8 @@ public class NimoFrame extends JFrame {
 
     public NimoFrame(String title, Color backgroundColor) {
         super(title);
+        ImageIcon icon2 = new ImageIcon("UNO_Logo.svg.png");
+        this.setIconImage(icon2.getImage());
         this.backgroundColor = backgroundColor;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
