@@ -3,7 +3,7 @@ import java.awt.*;
 
 
 public class Main {
-    static  colors colors = new colors();
+    static  NimoColors colors = new NimoColors();
     static  Panel panel = new Panel();
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -24,13 +24,5 @@ public class Main {
 
             }
         });
-
-
-
-
-
-
-
-
     }
 }

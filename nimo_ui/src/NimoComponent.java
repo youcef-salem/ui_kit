@@ -19,7 +19,7 @@ public abstract class NimoComponent extends JComponent {
     protected boolean isFocused;
     
     // Use the colors class
-    protected static final colors appColors = new colors();
+    protected static final NimoColors appColors = new NimoColors();
     
     // Shape used for hit detection
     private Shape componentShape;
