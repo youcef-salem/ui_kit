@@ -14,7 +14,7 @@ class NimoButton extends JButton {
         super(text);
         this.buttonColor = buttonColor;
         this.borderRadius = borderRadius;
-this.addActionListener(actlisner);
+        this.addActionListener(actlisner);
         // Make the button transparent to show our custom painting
         setContentAreaFilled(false);
         setFocusPainted(false);
