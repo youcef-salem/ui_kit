@@ -195,18 +195,19 @@ public class CardView extends JComponent {
     private boolean playable = false;
     private ImageIcon cardImage;
     private MouseAdapter clickListener;
-    
+
     // Cache for loaded images
     private static final Map<String, ImageIcon> imageCache = new HashMap<>();
 
     public CardView(Card card) {
         this.card = card;
-        setPreferredSize(new Dimension(100, 150));
+        setPreferredSize(new Dimension(70, 90));
         setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
+
+
         // Load image
         loadCardImage();
-        
+
         // Add mouse listeners
         addMouseListener(new MouseAdapter() {
             @Override
@@ -215,14 +216,14 @@ public class CardView extends JComponent {
                     clickListener.mouseClicked(e);
                 }
             }
-            
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (clickListener != null) {
                     clickListener.mouseEntered(e);
                 }
             }
-            
+
             @Override
             public void mouseExited(MouseEvent e) {
                 if (clickListener != null) {
@@ -231,7 +232,7 @@ public class CardView extends JComponent {
             }
         });
     }
-    
+
     private void loadCardImage() {
         try {
             // Check if image is already in cache
@@ -239,7 +240,7 @@ public class CardView extends JComponent {
                 cardImage = imageCache.get(card.imagePath);
                 return;
             }
-            
+
             // Load image from resources
             cardImage = new ImageIcon(getClass().getResource("/" + card.imagePath));
             if (cardImage.getIconWidth() == -1) {
@@ -247,9 +248,9 @@ public class CardView extends JComponent {
                 cardImage = null; // Image not found
             } else {
                 // Resize image to fit card
-                Image img = cardImage.getImage().getScaledInstance(90, 140, Image.SCALE_SMOOTH);
+                Image img = cardImage.getImage().getScaledInstance(70, 90, Image.SCALE_SMOOTH);
                 cardImage = new ImageIcon(img);
-                
+
                 // Add to cache
                 imageCache.put(card.imagePath, cardImage);
             }
@@ -263,11 +264,11 @@ public class CardView extends JComponent {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        
-     
+
+
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        
+
         // Draw card background
         if (cardImage != null) {
             cardImage.paintIcon(this, g, 5, 5);
@@ -275,27 +276,27 @@ public class CardView extends JComponent {
             // Draw placeholder if no image
             g2d.setColor(getColorForCard());
             g2d.fillRoundRect(5, 5, getWidth() - 10, getHeight() - 10, 10, 10);
-            
+
             // Draw card text
             g2d.setColor(Color.WHITE);
             g2d.setFont(new Font("Arial", Font.BOLD, 18));
-            
+
             FontMetrics fm = g2d.getFontMetrics();
             String text = card.type.toUpperCase();
             int textWidth = fm.stringWidth(text);
             int textHeight = fm.getHeight();
-            
+
             g2d.drawString(text, (getWidth() - textWidth) / 2, (getHeight() - textHeight) / 2 + fm.getAscent());
-            
+
             // Draw color text
             g2d.setFont(new Font("Arial", Font.PLAIN, 12));
             fm = g2d.getFontMetrics();
             text = card.color.toUpperCase();
             textWidth = fm.stringWidth(text);
-            
+
             g2d.drawString(text, (getWidth() - textWidth) / 2, (getHeight() / 2) + 20);
         }
-        
+
         // Draw border based on state
         if (selected) {
             g2d.setColor(Color.RED);
@@ -340,5 +341,5 @@ public class CardView extends JComponent {
     public Card getCard() {
         return card;
     }
-    
+
 }

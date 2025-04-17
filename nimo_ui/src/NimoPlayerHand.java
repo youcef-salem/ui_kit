@@ -4,50 +4,72 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NimoPlayerHand extends JPanel {
-    
-    private List<CardView> playerCards; // List of CardView objects
-    private static final int CARD_SPACING = 10; // Space between each card in the hand
-    
- 
+    private final List<CardView> playerCards;
+    private static final int CARD_SPACING = 2;
+    private final JPanel cardsPanel;
+
     public NimoPlayerHand() {
         this.playerCards = new ArrayList<>();
-        setLayout(new FlowLayout(FlowLayout.LEFT, CARD_SPACING, 0)); // Cards are displayed from left to right
-        
-        setPreferredSize(new Dimension(800, 150)); // Adjust size as needed
+        setLayout(new BorderLayout());
+
+        cardsPanel = new JPanel(); // Holds the actual cards
+        cardsPanel.setOpaque(false);
+        add(cardsPanel, BorderLayout.CENTER);
+
+        setOpaque(false);
     }
-    
- 
+
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        updateLayoutBasedOnPosition(); // Detect parent layout position
+    }
+
+    private void updateLayoutBasedOnPosition() {
+        Container parent = getParent();
+        if (parent != null) {
+            LayoutManager layout = parent.getLayout();
+            if (layout instanceof BorderLayout) {
+                Object constraints = ((BorderLayout) layout).getConstraints(this);
+
+                boolean isEastOrWest = BorderLayout.EAST.equals(constraints) || BorderLayout.WEST.equals(constraints);
+
+                if (isEastOrWest) {
+                    cardsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, CARD_SPACING, 0)); // horizontal
+                    setPreferredSize(new Dimension(150, 500)); // tall panel
+                } else {
+                    cardsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, CARD_SPACING)); // vertical
+                    setPreferredSize(new Dimension(800, 150)); // wide panel
+                }
+            }
+        }
+    }
+
     public void addCard(CardView cardView) {
         playerCards.add(cardView);
-        add(cardView); // Add the visual CardView component to the panel
-        revalidate(); // Re-layout the panel to reflect the change
-        repaint();    // Repaint the panel to update the display
+        cardsPanel.add(cardView);
+        revalidate();
+        repaint();
     }
-    
+
     public void removeCard(CardView cardView) {
         playerCards.remove(cardView);
-        remove(cardView); // Remove the CardView component from the panel
-        revalidate();     // Re-layout the panel to reflect the change
-        repaint();        
+        cardsPanel.remove(cardView);
+        revalidate();
+        repaint();
     }
 
     public void clearHand() {
         playerCards.clear();
-        removeAll(); // Remove all components from the panel
+        cardsPanel.removeAll();
         revalidate();
         repaint();
     }
-    
+
     public List<CardView> getPlayerCards() {
         return playerCards;
     }
-    
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        // Custom painting logic can go here, but the default layout handles card placement.
-    }
-    
+
     public boolean containsCard(CardView card) {
         return playerCards.contains(card);
     }

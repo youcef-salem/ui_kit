@@ -10,9 +10,9 @@ import java.awt.geom.RoundRectangle2D;
 public class NimoFrame extends JFrame {
     private Color backgroundColor;
 
-    public NimoFrame() {
-        this("NimoFrame", new Color(201, 166, 23));
-    }
+   // public NimoFrame() {
+     //   this("NimoFrame", new Color(201, 166, 23));
+  //  }
 
     public NimoFrame(String title, Color backgroundColor) {
         super(title);
@@ -20,7 +20,7 @@ public class NimoFrame extends JFrame {
         this.setIconImage(icon2.getImage());
         this.backgroundColor = backgroundColor;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 400);
+
 
         // Apply background color using a panel
         JPanel contentPanel = new JPanel() {
