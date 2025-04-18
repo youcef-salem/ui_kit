@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Main {
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
+		/*SwingUtilities.invokeLater(() -> {
 			NimoFrame frame = new NimoFrame("UNO", new Color(200, 230, 255));
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setLayout(new BorderLayout());
@@ -54,15 +54,18 @@ public class Main {
 			player4.addCard(new CardView(Card.create("wild", "wild draw four")));
 
 			// Add panels
+
 			frame.add(player1, BorderLayout.NORTH);
 			frame.add(player2, BorderLayout.SOUTH);
 			frame.add(player3, BorderLayout.EAST);
 			frame.add(player4, BorderLayout.WEST);
-			frame.add(startPanel, BorderLayout.CENTER); // centered card
+			frame.add(startPanel, BorderLayout.CENTER); // centered card*/
 
-			frame.pack();
-			frame.setLocationRelativeTo(null);
-			frame.setVisible(true);
-		});
+
+			NimoMenu menu = new NimoMenu();
+
+
+
+
 	}
 }

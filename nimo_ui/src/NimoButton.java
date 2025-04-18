@@ -18,12 +18,12 @@ class NimoButton extends JButton {
         // Make the button transparent to show our custom painting
         setContentAreaFilled(false);
         setFocusPainted(false);
-        setBorderPainted(false);
+        setBorderPainted(true);
         setOpaque(false);
 
         // Default font and foreground
         setFont(new Font("Arial", Font.BOLD, 14));
-        setForeground(Color.WHITE);
+        setForeground(Color.BLACK);
 
         // Add a default action listener
 
