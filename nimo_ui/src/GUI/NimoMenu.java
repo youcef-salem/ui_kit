@@ -7,7 +7,8 @@ import java.awt.event.MouseEvent;
 
 public class NimoMenu {
     JFrame frame = new JFrame();
-    ImageIcon icon = new ImageIcon("unobg.jpg");
+    ImageIcon icon = new ImageIcon("uno-back.jpg");
+
 
     public NimoMenu() {
         // Scale the icon
