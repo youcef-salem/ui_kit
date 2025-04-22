@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Main {
 	public static void main(String[] args) {
-		/*SwingUtilities.invokeLater(() -> {
+		SwingUtilities.invokeLater(() -> {
 			// Create main frame
 			NimoFrame frame = new NimoFrame("UNO", new Color(200, 230, 255));
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,7 +29,8 @@ public class Main {
 			for (NimoPlayerHand hand : new NimoPlayerHand[]{player1, player2, player3, player4}) {
 				hand.addCard(new CardView(Card.create("blue", "7")));
 				hand.addCard(new CardView(Card.create("green", "reverse")));
-				hand.addCard(new CardView(Card.create("wild", "wild draw four")));
+				hand.addCard(new CardView(Card.create("back", "back")));
+				hand.addCard(new CardView(Card.create("red", "7")));
 			}
 
 			// Add everything to frame
@@ -41,8 +42,9 @@ public class Main {
 
 			// Show the frame
 			frame.setVisible(true);
-		});*/
+		});
 
-		NimoMenu menu = new NimoMenu();
+		//NimoMenu menu = new NimoMenu();
+	
 	}
 }

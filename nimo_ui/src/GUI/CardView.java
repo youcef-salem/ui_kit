@@ -15,6 +15,7 @@ class Card {
     String imagePath;
     
     // Image path constants for all card types
+    private static final String CARD_BACK_IMAGE= "uno_card_back.png";
     // Green cards
     public static final String GREEN_0 = "green-0-card-clipart-sm.png";
     public static final String GREEN_1 = "green-1-card-clipart-sm.png";
@@ -158,6 +159,10 @@ class Card {
         wildCards.put("wild", WILD);
         wildCards.put("wild draw four", WILD_DRAW_FOUR);
         imageMap.put("wild", wildCards);
+        
+        Map<String, String> BackCards = new HashMap<>();
+        BackCards.put("back", CARD_BACK_IMAGE);
+        imageMap.put("back", BackCards);
         
         return imageMap;
     }
